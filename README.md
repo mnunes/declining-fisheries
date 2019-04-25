@@ -13,11 +13,11 @@ You can find an usage example with simulated data below.
 ```r
 library(ggplot2)
 set.seed(123)
-mock_data <- data.frame(x = seq.Date(from=ymd("2017-01-01"), 
+mock_data <- data.frame(x = seq.Date(from=ymd("1990-01-01"), 
                                      length.out = 300, 
-                                     by = "1 day"), 
+                                     by = "1 month"), 
                         y = c(rnorm(100), rnorm(100, 2), rnorm(100, -2)))
-    
+
 ggplot(mock_data, aes(x = x, y = y)) +
   geom_line()
 ```
@@ -28,21 +28,21 @@ ggplot(mock_data, aes(x = x, y = y)) +
 StructuralBreak(mock_data)
 [[1]]
   BP       BIC
-1  0 1216.7517
-2  1  977.2670
-3  2  845.9409
-4  3  853.4964
-5  4  861.6767
-6  5  872.5690
+1  0 1266.3174
+2  1 1039.4189
+3  2  876.4162
+4  3  884.7774
+5  4  894.2635
+6  5  904.5620
 
 [[2]]
         Inf Lim      Break        Sup Lim     
-Break 1 "2017-04-06" "2017-04-10" "2017-04-13"
-Break 2 "2017-07-19" "2017-07-20" "2017-07-21"
+Break 1 "1998-01-01" "1998-04-01" "1998-07-01"
+Break 2 "2006-07-01" "2006-08-01" "2006-09-01"
 
 [[3]]
 Sub-series 1 Sub-series 2 Sub-series 3 
-  0.09040591   1.87568446  -1.90052828
+ -0.03622291   2.10585093  -2.04229996
 ```
 
 ![simulated time series](images/ts_sb.png)
@@ -50,6 +50,8 @@ Sub-series 1 Sub-series 2 Sub-series 3
 ![histogram](images/hist.png)
 
 ![bic](images/bic.png)
+
+![final model](images/final_model.png)
 
 
 
