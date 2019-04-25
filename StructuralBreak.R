@@ -4,7 +4,7 @@
 
 # Author: Marcus Nunes
 # Site:   https://marcusnunes.me
-# Year:   2019
+# Year:   2019 
 
 # function to find the structual breaks(s)
 
