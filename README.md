@@ -8,9 +8,7 @@ This code uses one of Bai and Perron (2003) methods to find structural breaks in
 
 The most important file in this repository is `StructuralBreak.R`. This function estimates the break points for the time series and their confidence intervals. Besides that, it plots the data histogram, the fitted model, and calculates the sample mean for each part of the time series. It also provides the BIC calculations in order to report the best fitted model.
 
-Below you can fin a simulation showing how to use the function. 
-
-Results may 
+Below you can find an example showing how to use this function. 
 
 ```r
 # packages needed
