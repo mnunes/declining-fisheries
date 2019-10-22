@@ -1,48 +1,61 @@
 # Description
 
-R Code for the upcoming paper "Declining fisheries and increasing prices: the economic cost of tropical rivers impoundment" by Lima, M. A. L. L., Carvalho, A. R., Nunes, M. A., Angelini, R., and Doria, C. R. C. 
+R Code for the paper "Declining fisheries and increasing prices: The economic cost of tropical rivers impoundment" by Maria Alice Leite Lima, Adriana Rosa Carvalho, Marcus Alexandre Nunes, Ronaldo Angelini e Carolina Rodrigues da Costa Doria. The paper was published on Fisheries Research, Volume 221, January 2020, 105399.
 
 This code uses one of Bai and Perron (2003) methods to find structural breaks in times series' means. 
 
 # Usage
 
-Function `StructuralBreak` estimates the break points and their confidence intervals. Besides that, it plots the data histogram, the fitted model, and calculates the sample mean for each part of the time series. It also provides the BIC calculations in order to report the best fitted model.
+The most important file in this repository is `StructuralBreak.R`. This function estimates the break points for the time series and their confidence intervals. Besides that, it plots the data histogram, the fitted model, and calculates the sample mean for each part of the time series. It also provides the BIC calculations in order to report the best fitted model.
 
-You can find an usage example with simulated data below.
+Below you can fin a simulation showing how to use the function. 
+
+Results may 
 
 ```r
-library(ggplot2)
-set.seed(123)
-mock_data <- data.frame(x = seq.Date(from=ymd("1990-01-01"), 
-                                     length.out = 300, 
-                                     by = "1 month"), 
-                        y = c(rnorm(100), rnorm(100, 2), rnorm(100, -2)))
+# packages needed
 
-ggplot(mock_data, aes(x = x, y = y)) +
+library(ggplot2)
+library(lubridate)
+library(scales)
+
+# import data into R
+
+example <- read.csv(file = "example.csv")
+
+# convert date
+
+example$date <- ymd(example$date)
+
+# time series plot
+
+ggplot(example, aes(x = date, y = value)) +
   geom_line()
 ```
 
-![simulated time series](images/ts.png)
+![time series plot](images/ts.png)
 
 ```r
-StructuralBreak(mock_data)
+# running the code
+
+StructuralBreak(example)
 [[1]]
   BP       BIC
-1  0 1266.3174
-2  1 1039.4189
-3  2  876.4162
-4  3  884.7774
-5  4  894.2635
-6  5  904.5620
+1  0 1216.7517
+2  1  977.2670
+3  2  845.9409
+4  3  853.4964
+5  4  861.6767
+6  5  872.5690
 
 [[2]]
         Inf Lim      Break        Sup Lim     
-Break 1 "1998-01-01" "1998-04-01" "1998-07-01"
-Break 2 "2006-07-01" "2006-08-01" "2006-09-01"
+Break 1 "1997-12-01" "1998-04-01" "1998-07-01"
+Break 2 "2006-08-01" "2006-09-01" "2006-10-01"
 
 [[3]]
 Sub-series 1 Sub-series 2 Sub-series 3 
- -0.03622291   2.10585093  -2.04229996
+  0.09040591   1.87568446  -1.90052828
 ```
 
 ![simulated time series](images/ts_sb.png)
@@ -53,6 +66,11 @@ Sub-series 1 Sub-series 2 Sub-series 3
 
 ![final model](images/final_model.png)
 
+The output `[[1]]` shows the BIC values. With this table the user can see how many breakpoints are in the time series. In this example, we can see the minimum BIC is 845.9409, which gives us 2 breakpoints.
+
+`[[2]]` shows the date where each breakpoint is and its respective 95% confidence interval.
+
+Finally, `[[3]]` informs the mean for each sub-series.
 
 
 # References
