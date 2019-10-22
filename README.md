@@ -1,6 +1,6 @@
 # Description
 
-R Code for the paper "Declining fisheries and increasing prices: The economic cost of tropical rivers impoundment" by Maria Alice Leite Lima, Adriana Rosa Carvalho, Marcus Alexandre Nunes, Ronaldo Angelini e Carolina Rodrigues da Costa Doria. The paper was published on Fisheries Research, Volume 221, January 2020, 105399.
+R Code for the paper "Declining fisheries and increasing prices: The economic cost of tropical rivers impoundment" by Maria Alice Leite Lima, Adriana Rosa Carvalho, Marcus Alexandre Nunes, Ronaldo Angelini e Carolina Rodrigues da Costa Doria. The paper was published on Fisheries Research, Volume 221, January 2020, 105399, [https://doi.org/10.1016/j.fishres.2019.105399](https://doi.org/10.1016/j.fishres.2019.105399)
 
 This code uses one of Bai and Perron (2003) methods to find structural breaks in times series' means. 
 
